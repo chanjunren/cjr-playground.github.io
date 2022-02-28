@@ -1,7 +1,22 @@
+import React from 'react';
+import {Route, Routes, BrowserRouter, Navigate} from 'react-router-dom';
+import Home from './pages/home';
+import Form from './pages/form';
+import Sidebar from './sidebar';
+
 export default function App() {
+	let routes = (
+		<Routes>
+			<Route path="/" element={<Home/>}/>
+			<Route path="/form" element={<Form/>}/>
+			<Route path="*" element={<Navigate to="/"/>}/>
+		</Routes>
+	);
+
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+		<BrowserRouter>
+			<Sidebar/>
+			{routes}
+		</BrowserRouter>
+	);
 }
